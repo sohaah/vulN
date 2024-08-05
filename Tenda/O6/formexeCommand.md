@@ -6,7 +6,7 @@
 The O6 V3.0 V1.0.0.7(2054) firmware contains a stack overflow vulnerability in the `formexeCommand` function. Specifically, the `Var` variable is assigned the value of the `cmdinput` parameter from a POST request. Since `cmdinput` is user-controlled, its value can be manipulated to exceed the allocated size of the `v3` array. This vulnerability arises from the use of the `strcpy(v3 + 16, src)` statement, which does not perform bounds checking on the input. Consequently, if the length of the user-provided `cmdinput` exceeds the storage capacity of the `v3` array, it causes a buffer overflow, leading to a potential security exploit.
 ![Vulnerability Function2](./20240805171010.png)
 
-![[Pasted image 20240805171010.png]]
+
 
 ## POC
 ```python
