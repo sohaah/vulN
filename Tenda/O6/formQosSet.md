@@ -6,7 +6,8 @@
 In the O6 V3.0 firmware version V1.0.0.7(2054), there is a stack overflow vulnerability in the `formQosSet` function. Specifically, the variables `Var`, `v3`, `v4`, `v5`, and `v6` receive their values from user-controlled POST request parameters, namely `remark`, `ipRange`, `upSpeed`, `downSpeed`, and `enable`. The function contains a call to `sprintf` that formats these variables into the `v18` buffer as follows:
 `sprintf(v18, "%d;%s;%s;%s;%s;0;0;0;1;%s", v8 + 1, v6, v3, v4, v5, Var);`
 Since the length of the `remark`, `ipRange`, `upSpeed`, `downSpeed`, and `enable` parameters is not validated, it is possible for these user-provided values to exceed the capacity of the `v18` array. This can lead to a buffer overflow, which is a significant security vulnerability.
-![[Pasted image 20240805173254.png]]
+![Vulnerability Function1](./20240805173254.png)
+
 
 ## POC
 ```python
