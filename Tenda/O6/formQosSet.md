@@ -20,4 +20,4 @@ data = {"upSpeed": payload}
 response = requests.post(url, data=data)
 print(response.text)
 ```
-![[Pasted image 20240805163853.png]]
+![Vulnerability Function2](20240805163853.png)
